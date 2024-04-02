@@ -1,0 +1,53 @@
+{
+  "name": "configwise",
+  "version": "0.1.1",
+  "description": "",
+  "repository": "https://github.com/hasnainroopawalla/configwise",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "tsc",
+    "prepare": "yarn build",
+    "publish:dry-run": "npm publish --dry-run",
+    "test": "jest --config jestconfig.json",
+    "test:watch": "jest --config jestconfig.json --watch",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "createTag": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "typescript",
+    "react",
+    "config",
+    "settings"
+  ],
+  "author": "Hasnain Roopawalla",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.2.74",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "ts-jest": "^29.1.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@types/react-dom": "^18.2.23",
+    "bowser": "^2.11.0",
+    "parcel": "^2.12.0",
+    "react-dom": "^18.2.0"
+  }
+}
