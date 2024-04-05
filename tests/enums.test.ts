@@ -1,10 +1,24 @@
 import Bowser from "bowser";
-import { BrowserName } from "../src/enums";
+import { Browser, Engine, OS, Platform } from "../src/enums";
 
 describe("Enums", () => {
-  test("BrowserName", () => {
+  test("Browser", () => {
     expect(Object.keys(Bowser.BROWSER_MAP)).toMatchObject(
-      Object.values(BrowserName)
+      Object.values(Browser)
     );
+  });
+
+  test("OS", () => {
+    expect(Object.keys(Bowser.OS_MAP)).toMatchObject(Object.values(OS));
+  });
+
+  test("Platform", () => {
+    expect(Object.keys(Bowser.PLATFORMS_MAP)).toMatchObject(
+      Object.values(Platform)
+    );
+  });
+
+  test("Engine", () => {
+    expect(Object.keys(Bowser.ENGINE_MAP)).toMatchObject(Object.values(Engine));
   });
 });

@@ -1,4 +1,4 @@
-export enum BrowserName {
+export enum Browser {
   AmazonSilk = "amazon_silk",
   Android = "android",
   Bada = "bada",
@@ -37,4 +37,36 @@ export enum BrowserName {
   WebOS = "webos",
   WeChat = "wechat",
   Yandex = "yandex",
+}
+
+export enum Platform {
+  Tablet = "tablet",
+  Mobile = "mobile",
+  Desktop = "desktop",
+  Tv = "tv",
+}
+
+export enum OS {
+  WindowsPhone = "WindowsPhone",
+  Windows = "Windows",
+  MacOS = "MacOS",
+  iOS = "iOS",
+  Android = "Android",
+  WebOS = "WebOS",
+  BlackBerry = "BlackBerry",
+  Bada = "Bada",
+  Tizen = "Tizen",
+  Linux = "Linux",
+  ChromeOS = "ChromeOS",
+  PlayStation4 = "PlayStation4",
+  Roku = "Roku",
+}
+
+export enum Engine {
+  EdgeHTML = "EdgeHTML",
+  Blink = "Blink",
+  Trident = "Trident",
+  Presto = "Presto",
+  Gecko = "Gecko",
+  WebKit = "WebKit",
 }
