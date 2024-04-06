@@ -4,8 +4,7 @@ import { useConfig } from "./config";
 
 const App = () => {
   const config = useConfig();
-
-  console.log("config", config.showButton[0].value);
+  console.log("render");
 
   return <span>Component</span>;
 };
