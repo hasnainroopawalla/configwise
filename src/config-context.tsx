@@ -5,7 +5,7 @@ import type {
 } from "./config-context.interface";
 
 // TODO: move to utils
-export const getBaseConfig = <TUserConfig,>(
+const getBaseConfig = <TUserConfig,>(
   configFilters: IDynamicConfigFilters<TUserConfig>
 ) =>
   configFilters.find(
@@ -16,18 +16,13 @@ export const getBaseConfig = <TUserConfig,>(
 export function createConfig<TUserConfig>(
   userConfig: IUserConfig<TUserConfig>
 ) {
+  console.log("createConfig");
   const configValues: IConfig<TUserConfig> = {} as IConfig<TUserConfig>;
+  for (const key in userConfig) {
+    const configFilters = userConfig[key];
+    const baseConfig = getBaseConfig(configFilters);
+    configValues[key] = baseConfig.value;
+  }
 
-  const useConfig = () => {
-    for (const key in userConfig) {
-      const configFilters = userConfig[key];
-
-      const baseConfig = getBaseConfig(configFilters);
-
-      configValues[key] = baseConfig.value;
-    }
-    return configValues;
-  };
-
-  return useConfig;
+  return () => configValues;
 }
