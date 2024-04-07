@@ -7,13 +7,13 @@ export const useConfig = createConfig({
       value: true,
     },
     {
-      browser: Browser.Chrome,
+      browser: Browser.Edge,
       value: false,
     },
   ],
   enableModernUi: [
     {
-      value: 33,
+      value: { name: 33 },
     },
   ],
 });

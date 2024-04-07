@@ -1,24 +1,28 @@
 import Bowser from "bowser";
-import { Browser, Engine, OS, Platform } from "../src/enums";
+import * as enums from "../src/enums";
+
+const compareObjects = (
+  bowserObj: Record<string, string>,
+  configwiseEnum: object
+) =>
+  expect(Object.values(bowserObj).sort()).toMatchObject(
+    Object.values(configwiseEnum).sort()
+  );
 
 describe("Enums", () => {
   test("Browser", () => {
-    expect(Object.keys(Bowser.BROWSER_MAP)).toMatchObject(
-      Object.values(Browser)
-    );
+    compareObjects(Bowser.BROWSER_MAP, enums.Browser);
   });
 
   test("OS", () => {
-    expect(Object.keys(Bowser.OS_MAP)).toMatchObject(Object.values(OS));
+    compareObjects(Bowser.OS_MAP, enums.OS);
   });
 
   test("Platform", () => {
-    expect(Object.keys(Bowser.PLATFORMS_MAP)).toMatchObject(
-      Object.values(Platform)
-    );
+    compareObjects(Bowser.PLATFORMS_MAP, enums.Platform);
   });
 
   test("Engine", () => {
-    expect(Object.keys(Bowser.ENGINE_MAP)).toMatchObject(Object.values(Engine));
+    compareObjects(Bowser.ENGINE_MAP, enums.Engine);
   });
 });
