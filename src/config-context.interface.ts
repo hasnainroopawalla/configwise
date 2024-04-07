@@ -1,15 +1,34 @@
-type DefaultConfig = { value: unknown };
+export type IBaseConfig<TConfigValueType> = { value: TConfigValueType };
 
-type FilterConfig = (
+type IConfigWithFilters<TConfigValueType> = (
   | { browser: string }
   | { platform: string }
   | { os: string }
   | { engine: string }
 ) &
-  DefaultConfig;
+  IBaseConfig<TConfigValueType>;
 
-type IConfigValues = [DefaultConfig, ...FilterConfig[]];
+type IConfigFilters<TConfigFilter> = [
+  IBaseConfig<TConfigFilter>,
+  ...IConfigWithFilters<TConfigFilter>[]
+];
 
-export type IConfig<TConfig> = {
-  [K in keyof TConfig]: IConfigValues;
+/**
+ * A strongly typed `userConfig` object required to create the `IConfig` object.
+ */
+export type IUserConfig<TConfig> = {
+  [K in keyof TConfig]: IConfigFilters<TConfig[K]>;
 };
+
+/**
+ * A type-safe object of the config parameters and corresponding values returned by the `useConfig` hook.
+ */
+export type IConfig<TConfig> = {
+  [K in keyof TConfig]: IBaseConfig<TConfig[K]>["value"];
+};
+
+/**
+ * A dynamic type to infer the filters of a specific config parameter.
+ */
+export type IDynamicConfigFilters<TUserConfig> =
+  IUserConfig<TUserConfig>[Extract<keyof TUserConfig, string>];

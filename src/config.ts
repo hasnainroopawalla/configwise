@@ -13,7 +13,7 @@ export const useConfig = createConfig({
   ],
   enableModernUi: [
     {
-      value: true,
+      value: 33,
     },
   ],
 });
