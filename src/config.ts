@@ -1,4 +1,4 @@
-import { createConfig } from "./config-context";
+import { createConfig } from "./create-config";
 import { Browser, OS, Platform } from "./enums";
 
 export const useConfig = createConfig({
@@ -17,13 +17,13 @@ export const useConfig = createConfig({
       },
     ],
   },
-  // enableModernUi: {
-  //   value: { name: "base" },
-  //   filters: [
-  //     {
-  //       browser: [Browser.InternetExplorer, Browser.Chrome],
-  //       value: { name: "IE" },
-  //     },
-  //   ],
-  // },
+  enableModernUi: {
+    value: { name: "base" },
+    filters: [
+      {
+        browser: [Browser.InternetExplorer, Browser.Chrome],
+        value: { name: "IE" },
+      },
+    ],
+  },
 });

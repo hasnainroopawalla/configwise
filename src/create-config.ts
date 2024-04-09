@@ -1,5 +1,5 @@
 import { PropertyParser } from "./property-parser";
-import type { IConfig, IUserConfig } from "./config-context.interface";
+import type { IConfig, IUserConfig } from "./config.interface";
 import { getEnvironment } from "./environment";
 
 export function createConfig<TUserConfig>(

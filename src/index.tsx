@@ -3,13 +3,11 @@ import ReactDOM from "react-dom/client";
 import { useConfig } from "./config";
 
 const App = () => (
-  <div>
+  <>
     <Component1 />
-    <br />
     <Component2 />
-    <br />
     <Component3 />
-  </div>
+  </>
 );
 
 const Component1 = () => {

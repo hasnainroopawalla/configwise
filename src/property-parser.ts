@@ -1,4 +1,4 @@
-import type { IFilterValue, IProperty } from "./config-context.interface";
+import type { IFilterValue, IProperty } from "./config.interface";
 import type { Browser, Engine, OS, Platform } from "./enums";
 import type { IEnvironment } from "./environment";
 
@@ -22,7 +22,6 @@ export class PropertyParser {
       const filter = property.filters[i];
 
       if (this.isFilterSatisfied(filter)) {
-        console.log(filter);
         return filter.value;
       }
     }
