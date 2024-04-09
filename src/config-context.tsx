@@ -6,18 +6,13 @@ export function createConfig<TUserConfig>(
   userConfig: IUserConfig<TUserConfig>
 ) {
   const environment = getEnvironment();
+
   const propParser = new PropertyParser(environment);
 
   const configValues: IConfig<TUserConfig> = {} as IConfig<TUserConfig>;
 
   for (const propertyName in userConfig) {
-    console.log("propertyName:", propertyName);
     configValues[propertyName] = propParser.getValue(userConfig[propertyName]);
-    // const parameterFilters = userConfig[key];
-    // const baseParameter = getBaseValue(parameterFilters);
-    // console.log(key);
-    // getParameterValue(parameterFilters, environment);
-    // configValues[key] = baseParameter.value;
   }
 
   return () => configValues;

@@ -1,13 +1,15 @@
-// TODO: Potentially move to utils.ts
+import { Browser, Engine, OS, Platform } from "./enums";
+
+// TODO: Potentially move to type utils
 type OneOf<T> = {
   [K in keyof T]-?: Pick<T, K> & Partial<T>;
 }[keyof T];
 
-type IFilterValue<TProp> = OneOf<{
-  browser: string;
-  os: string;
-  platform: string;
-  engine: string;
+export type IFilterValue<TProp> = OneOf<{
+  browser: Browser[];
+  os: OS[];
+  platform: Platform[];
+  engine: Engine[];
 }> & { value: TProp };
 
 export type IProperty<TProp> = {
@@ -26,5 +28,5 @@ export type IUserConfig<TConfig> = {
  * A type-safe object of the config parameters and corresponding values.
  */
 export type IConfig<TConfig> = {
-  [K in keyof TConfig]: TConfig[K]; // IBaseValue<TConfig[K]>["value"];
+  [K in keyof TConfig]: TConfig[K];
 };
