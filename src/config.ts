@@ -1,19 +1,28 @@
 import { createConfig } from "./config-context";
-import { Browser } from "./enums";
+import { Browser, Platform } from "./enums";
 
 export const useConfig = createConfig({
-  showButton: [
-    {
-      value: true,
-    },
-    {
-      browser: Browser.Edge,
-      value: false,
-    },
-  ],
-  enableModernUi: [
-    {
-      value: { name: 33 },
-    },
-  ],
+  showButton: {
+    value: true,
+    filters: [
+      {
+        browser: Browser.Edge,
+        value: "false",
+      },
+      {
+        platform: Platform.Mobile,
+        browser: Browser.Chrome,
+        value: true,
+      },
+    ],
+  },
+  enableModernUi: {
+    value: { name: "base" },
+    filters: [
+      {
+        browser: Browser.InternetExplorer,
+        value: { name: "IE" },
+      },
+    ],
+  },
 });

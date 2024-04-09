@@ -1,34 +1,30 @@
-export type IBaseConfig<TConfigValueType> = { value: TConfigValueType };
+// TODO: Potentially move to utils.ts
+type OneOf<T> = {
+  [K in keyof T]-?: Pick<T, K> & Partial<T>;
+}[keyof T];
 
-type IConfigWithFilters<TConfigValueType> = (
-  | { browser: string }
-  | { platform: string }
-  | { os: string }
-  | { engine: string }
-) &
-  IBaseConfig<TConfigValueType>;
+type IFilterValue<TProp> = OneOf<{
+  browser: string;
+  os: string;
+  platform: string;
+  engine: string;
+}> & { value: TProp };
 
-type IConfigFilters<TConfigFilter> = [
-  IBaseConfig<TConfigFilter>,
-  ...IConfigWithFilters<TConfigFilter>[]
-];
+export type IProperty<TProp> = {
+  value: TProp;
+  filters?: IFilterValue<TProp>[];
+};
 
 /**
  * A strongly typed `userConfig` object required to create the `IConfig` object.
  */
 export type IUserConfig<TConfig> = {
-  [K in keyof TConfig]: IConfigFilters<TConfig[K]>;
+  [K in keyof TConfig]: IProperty<TConfig[K]>;
 };
 
 /**
- * A type-safe object of the config parameters and corresponding values returned by the `useConfig` hook.
+ * A type-safe object of the config parameters and corresponding values.
  */
 export type IConfig<TConfig> = {
-  [K in keyof TConfig]: IBaseConfig<TConfig[K]>["value"];
+  [K in keyof TConfig]: TConfig[K]; // IBaseValue<TConfig[K]>["value"];
 };
-
-/**
- * A dynamic type to infer the filters of a specific config parameter.
- */
-export type IDynamicConfigFilters<TUserConfig> =
-  IUserConfig<TUserConfig>[Extract<keyof TUserConfig, string>];
