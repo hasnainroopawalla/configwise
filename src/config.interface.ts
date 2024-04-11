@@ -1,6 +1,5 @@
 import { Browser, Engine, OS, Platform } from "./enums";
 
-// TODO: Potentially move to type utils
 type OneOf<T> = {
   [K in keyof T]-?: Pick<T, K> & Partial<T>;
 }[keyof T];

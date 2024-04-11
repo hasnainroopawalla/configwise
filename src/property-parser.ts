@@ -29,10 +29,10 @@ export class PropertyParser {
 
   private isFilterSatisfied<TProp>(filter: IFilterValue<TProp>): boolean {
     return [
-      this.browserFilter(filter),
-      this.osFilter(filter),
-      this.platformFilter(filter),
-      this.engineFilter(filter),
+      this.validBrowserFilter(filter),
+      this.validOsFilter(filter),
+      this.validPlatformFilter(filter),
+      this.validEngineFilter(filter),
     ].every((element) => element === true);
   }
 
@@ -40,28 +40,28 @@ export class PropertyParser {
     return property.value;
   }
 
-  private browserFilter<TProp>(filter: IFilterValue<TProp>): boolean {
+  private validBrowserFilter<TProp>(filter: IFilterValue<TProp>): boolean {
     if (!filter.browser) {
       return true;
     }
     return filter.browser.includes(this.environment.browser as Browser);
   }
 
-  private osFilter<TProp>(filter: IFilterValue<TProp>): boolean {
+  private validOsFilter<TProp>(filter: IFilterValue<TProp>): boolean {
     if (!filter.os) {
       return true;
     }
     return filter.os.includes(this.environment.os as OS);
   }
 
-  private platformFilter<TProp>(filter: IFilterValue<TProp>): boolean {
+  private validPlatformFilter<TProp>(filter: IFilterValue<TProp>): boolean {
     if (!filter.platform) {
       return true;
     }
     return filter.platform.includes(this.environment.platform as Platform);
   }
 
-  private engineFilter<TProp>(filter: IFilterValue<TProp>): boolean {
+  private validEngineFilter<TProp>(filter: IFilterValue<TProp>): boolean {
     if (!filter.engine) {
       return true;
     }

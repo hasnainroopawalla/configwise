@@ -15,5 +15,5 @@ export function createConfig<TUserConfig>(
     configValues[propertyName] = propParser.getValue(userConfig[propertyName]);
   }
 
-  return () => configValues;
+  return configValues;
 }

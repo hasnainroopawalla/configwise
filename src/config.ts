@@ -1,7 +1,7 @@
 import { createConfig } from "./create-config";
 import { Browser, OS, Platform } from "./enums";
 
-export const useConfig = createConfig({
+export const configwise = createConfig({
   showButton: {
     value: true,
     filters: [
