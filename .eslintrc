@@ -1,7 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react-hooks"],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -35,8 +35,6 @@
         "varsIgnorePattern": "^_",
         "ignoreRestSiblings": true
       }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    ]
   }
 }

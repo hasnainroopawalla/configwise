@@ -30,7 +30,7 @@ describe("createConfig", () => {
         ],
       },
     });
-    expect(result()).toMatchObject({
+    expect(result).toMatchObject({
       property: "base",
     });
   });
@@ -57,7 +57,7 @@ describe("createConfig", () => {
         ],
       },
     });
-    expect(result()).toMatchObject({
+    expect(result).toMatchObject({
       property: "firefox-macos",
     });
   });
@@ -84,7 +84,7 @@ describe("createConfig", () => {
         ],
       },
     });
-    expect(result()).toMatchObject({
+    expect(result).toMatchObject({
       property: "base",
     });
   });

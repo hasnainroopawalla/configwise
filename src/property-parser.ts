@@ -9,6 +9,14 @@ export class PropertyParser {
     this.environment = environment;
   }
 
+  /**
+   * Returns the appropriate property value based on the filters.
+   *
+   * @remarks
+   * If no filters are satisfied, the base value is returned
+   * @param property - The IProperty object containing the values and filters
+   * @returns The property value
+   */
   public getValue<TProp>(property: IProperty<TProp>): TProp {
     return this.getFilterValue(property) || this.getBaseValue(property);
   }
