@@ -1,4 +1,4 @@
-import Bowser from "bowser";
+import { getParser } from "bowser";
 
 export type IEnvironment = {
   browser: string;
@@ -8,7 +8,7 @@ export type IEnvironment = {
 };
 
 export const getEnvironment = (): IEnvironment => {
-  const parser = Bowser.getParser(window.navigator.userAgent);
+  const parser = getParser(window.navigator.userAgent);
   return {
     browser: parser.getBrowserName(),
     platform: parser.getPlatformType(),
