@@ -1,7 +1,7 @@
 {
   "name": "configwise",
   "version": "0.1.1",
-  "description": "",
+  "description": "Crafting Dynamic Project Configs based on your Browser's Whims ⚙️",
   "repository": "https://github.com/hasnainroopawalla/configwise",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
